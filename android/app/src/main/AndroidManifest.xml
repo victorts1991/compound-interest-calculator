@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.compoundinterestcalculator">
+  package="br.com.fiiquedeboa.juroscompostos">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -22,4 +22,4 @@
         </intent-filter>
       </activity>
     </application>
-</manifest>
+</manifest> 
