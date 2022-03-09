@@ -1,4 +1,4 @@
-package com.compoundinterestcalculator;
+package br.com.fiiquedeboa.juroscompostos;
 
 import com.facebook.react.ReactActivity;
 
