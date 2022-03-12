@@ -3,7 +3,7 @@ package br.com.fiiquedeboa.juroscompostos;
 import android.app.Application;
 import android.content.Context;
 
-import com.facebook.react.BuildConfig;
+//import com.facebook.react.BuildConfig;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactInstanceManager;
@@ -44,7 +44,6 @@ public class MainApplication extends Application implements ReactApplication {
 
   @Override
   public void onCreate() {
-    setTheme(R.style.AppTheme);
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
     initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
