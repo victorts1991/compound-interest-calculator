@@ -1,7 +1,4 @@
-
-if [ ${ADMOB_UNIT_ID} != "test" ]; then
-    npm run set-settings ${ADMOB_UNIT_ID}
-fi
+npm run set-settings ${ADMOB_UNIT_ID} ${ADS_APPLICATION_ID}
 
 npm install -g react-native-cli
 
