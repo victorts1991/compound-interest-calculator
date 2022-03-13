@@ -1,10 +1,7 @@
 const fs = require('fs')
 
 const adMobUnitId = process.argv[2]
-
 const adsApplicationId = process.argv[3]
-
-console.log('teste -> ', adMobUnitId, adsApplicationId)
 
 const rootDir = process.cwd()
 
