@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { BannerAd, BannerAdSize } from '@react-native-admob/admob'
-import { adMobUnitId } from '../../settings/adMobUnitId'
+import { adMobUnitId } from '../../settings/AdMobUnitId'
 import { ActivityIndicator } from 'react-native'
 import { Container, AdContainer } from './styles'
 
