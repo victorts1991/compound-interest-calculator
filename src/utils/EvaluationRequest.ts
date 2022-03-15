@@ -16,7 +16,6 @@ export async function EvaluationRequest  () {
                 'Avaliar a Aplicação',
                 'Gostou do app? Então não se importaria de o avaliar? Não demora nem um minuto. Obrigado pelo apoio!',
                 [
-                  
                   {text: 'Avaliar', onPress: async () => {
                     const url = "https://play.google.com/store/apps/details?id=br.com.fiiquedeboa.juroscompostos";
                     Linking.canOpenURL(url).then(supported => {
