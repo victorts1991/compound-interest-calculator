@@ -113,7 +113,7 @@ export function Home () {
             {
                 text: "Indique para Alguém",
                 icon: require("../../assets/images/share-icon.png"),
-                name: "btn-share-app"
+                name: "btn-rate-app"
             }
           ]}
           onPressItem={name => {
