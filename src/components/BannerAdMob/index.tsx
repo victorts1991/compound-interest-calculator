@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { BannerAd, BannerAdSize } from '@react-native-admob/admob'
 import { adMobUnitId } from '../../settings/AdMobUnitId'
-import { ActivityIndicator } from 'react-native'
+
 import { Container, AdContainer } from './styles'
 
 export function BannerAdMob() {
@@ -11,10 +11,6 @@ export function BannerAdMob() {
   const bannerRef = useRef(null);
   return (
     <Container>
-      {
-        !bannerIsLoaded &&
-        <ActivityIndicator size="large" />
-      }
       <AdContainer haveFlex={bannerIsLoaded}>
         <BannerAd
           style={{ width: '100%' }}

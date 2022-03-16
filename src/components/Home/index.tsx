@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { TextInputMask } from 'react-native-masked-text'
-import RadioForm from 'react-native-simple-radio-button'
-
+import { FieldRadio } from '../FieldRadio'
 import { EvaluationRequest } from '../../utils/EvaluationRequest'
 import { Header } from '../Header'
 import { Results } from '../Results'
@@ -12,6 +11,7 @@ const textInputMaskStyle = {
     borderWidth: 1, 
     padding: 4, 
     width: '100%',
+    height: 40,
     color: '#000'
 }
 
@@ -35,15 +35,15 @@ export function Home () {
                 <LeftColumn>
                     <TextInputMask
 	              	  style={textInputMaskStyle}
-					  type={'money'}
-					  placeholder={ 'Valor Inicial' }
+                      type={'money'}
+                      placeholder={ 'Valor Inicial' }
                       placeholderTextColor={'#000'}
-					  value={initialValue}
-					  onChangeText={text => setInitialValue(text)}
+                      value={initialValue}
+                      onChangeText={text => setInitialValue(text)}
 					/>
                     <TextInputMask
 	              	  style={textInputMaskStyle}
-					  type={'money'}
+                      type={'money'}
                       options={{
                         precision: 2,
                         separator: ',',
@@ -51,10 +51,10 @@ export function Home () {
                         unit: '',
                         suffixUnit: ''
                       }}
-					  placeholder={ 'Taxa de Juros' }
+                      placeholder={ 'Taxa de Juros' }
                       placeholderTextColor={'#000'}
-					  value={interestRate}
-					  onChangeText={text => setInterestRate(text)}
+                      value={interestRate}
+                      onChangeText={text => setInterestRate(text)}
 					/>
                     <TextInputMask
 	              		style={textInputMaskStyle}
@@ -68,32 +68,30 @@ export function Home () {
                 <RightColumn>
                     <TextInputMask
 	              	  style={textInputMaskStyle}
-					  type={'money'}
-					  placeholder={ 'Aporte Mensal' }
+                      type={'money'}
+                      placeholder={ 'Aporte Mensal' }
                       placeholderTextColor={'#000'}
-					  value={monthlyInvestment}
-					  onChangeText={text => setMonthlyInvestment(text)}
+                      value={monthlyInvestment}
+                      onChangeText={text => setMonthlyInvestment(text)}
 					/>
                     <RadioFormContainer>
-                        <RadioForm
-                            radio_props={[
+                        <FieldRadio 
+                            radioProps={[
                                 {label: '% a.m  ', value: 'month'},
                                 {label: '% a.a', value: 'year'},
                             ]}
-                            initial={0}
-                            formHorizontal={true}
                             onPress={(value) => setInterestRatePeriod(value)}
+                            isSelected={interestRatePeriod}
                         />
                     </RadioFormContainer>
                     <RadioFormContainer>
-                        <RadioForm
-                            radio_props={[
+                        <FieldRadio 
+                            radioProps={[
                                 {label: 'mês(es)  ', value: 'month'},
                                 {label: 'ano(s)', value: 'year'},
                             ]}
-                            initial={0}
-                            formHorizontal={true}
                             onPress={(value) => setInvestmentTimeType(value)}
+                            isSelected={investmentTimeType}
                         />
                     </RadioFormContainer>
                 </RightColumn>

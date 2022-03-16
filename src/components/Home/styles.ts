@@ -31,12 +31,12 @@ export const RightColumn = styled.View`
     padding: 10px;
     max-height: 200px;
     width: 50%;
-    
 `
 
 export const RadioFormContainer = styled.View`
-    margin-top: 20px;
-    margin-left: -10px;
+    padding-top: 5px;
+    height: 40px;
+    justify-content: center;
 `
 
 export const Footer = styled.View`
