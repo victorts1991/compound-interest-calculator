@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { FloatingAction } from "react-native-floating-action"
 import { View } from 'react-native'
 import { TextInputMask } from 'react-native-masked-text'
 import { FieldRadio } from '../FieldRadio'
-import { EvaluationRequest } from '../../utils/EvaluationRequest'
 import { Header } from '../Header'
 import { Results } from '../Results'
 import { Container, Content, LeftColumn, RightColumn, RadioFormContainer, Button, ButtonLabel, Footer } from './styles'
@@ -25,10 +24,6 @@ export function Home () {
     const [monthlyInvestment, setMonthlyInvestment] = useState('')
     const [interestRatePeriod, setInterestRatePeriod] = useState('')
     const [investmentTimeType, setInvestmentTimeType] = useState('')
-
-    useEffect(() => {
-        EvaluationRequest()
-    }, [])
 
     return (
         <>
@@ -111,9 +106,14 @@ export function Home () {
         <FloatingAction
           actions={[
             {
-              text: "Indique para Alguém",
-              icon: require("../../assets/images/share-icon.png"),
-              name: "bt_accessibility"
+              text: "Avaliar o App",
+              icon: require("../../assets/images/star-icon.png"),
+              name: "btn-share-app"
+            },
+            {
+                text: "Indique para Alguém",
+                icon: require("../../assets/images/share-icon.png"),
+                name: "btn-share-app"
             }
           ]}
           onPressItem={name => {
