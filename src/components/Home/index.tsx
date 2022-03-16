@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import { FloatingAction } from "react-native-floating-action"
+import { View } from 'react-native'
 import { TextInputMask } from 'react-native-masked-text'
 import { FieldRadio } from '../FieldRadio'
 import { EvaluationRequest } from '../../utils/EvaluationRequest'
@@ -29,6 +31,7 @@ export function Home () {
     }, [])
 
     return (
+        <>
         <Container>
             <Header title="Calculadora de Juros Compostos" />
             <Content>
@@ -104,5 +107,20 @@ export function Home () {
                 <Results />
             </Footer>
         </Container>
+        
+        <FloatingAction
+          actions={[
+            {
+              text: "Indique para Alguém",
+              icon: require("../../assets/images/share-icon.png"),
+              name: "bt_accessibility"
+            }
+          ]}
+          onPressItem={name => {
+            console.log(`selected button: ${name}`);
+          }}
+          overlayColor={'transparent'}
+        />
+      </>
     )
 }  
