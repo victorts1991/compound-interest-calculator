@@ -1,9 +1,5 @@
 import styled from 'styled-components/native'
 
-/*<ScrollView 
-		      	style={{padding: 20}}
-          		ref='_scrollView'>*/
-
 export const Container = styled.ScrollView`
     flex: 1;
     background: #FFF;

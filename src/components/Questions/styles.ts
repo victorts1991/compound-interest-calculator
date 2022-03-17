@@ -36,6 +36,7 @@ export const AnswerContainer = styled.View`
 export const Answer = styled.Text`
     font-size: 16px;
     margin-top: 10px;
+    color: #000;
 `
 
 export const AdContainer = styled.View`

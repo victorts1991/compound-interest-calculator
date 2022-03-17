@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import SplashScreen from 'react-native-splash-screen'
 
 import { BannerAdMob } from './components/BannerAdMob'
@@ -19,13 +19,21 @@ interface ItabBarIcon {
 
 export default function App () {
 
+  const [canOpenHeaderAd, setcanOpenHeaderAd] = useState(false)
+  
   useEffect(() => {
     SplashScreen.hide()
+    setTimeout(() => {
+      setcanOpenHeaderAd(true)
+    }, 1000)
   }, [])
 
   return (
     <>
-      <BannerAdMob />
+      {
+        canOpenHeaderAd &&
+        <BannerAdMob />
+      }
       <NavigationContainer>
         <Tab.Navigator
           initialRouteName="Home"

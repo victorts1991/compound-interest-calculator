@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { FloatingAction } from "react-native-floating-action"
-import { View } from 'react-native'
 import { TextInputMask } from 'react-native-masked-text'
 import { FieldRadio } from '../FieldRadio'
 import { Header } from '../Header'
 import { Results } from '../Results'
+import { Alert } from '../Alert'
 import { Container, Content, LeftColumn, RightColumn, RadioFormContainer, Button, ButtonLabel, Footer } from './styles'
 
 const textInputMaskStyle = {
@@ -24,6 +24,83 @@ export function Home () {
     const [monthlyInvestment, setMonthlyInvestment] = useState('')
     const [interestRatePeriod, setInterestRatePeriod] = useState('')
     const [investmentTimeType, setInvestmentTimeType] = useState('')
+
+    const [alertVisible, setAlertVisible] = useState(false)
+    const [alertText, setAlertText] = useState('')
+
+    useEffect(() => {
+        if(alertText !== ''){
+            setAlertVisible(true)
+        }
+    }, [alertText])
+
+    useEffect(() => {
+        if(!alertVisible){
+            setAlertText('')
+        }
+    }, [alertVisible])
+
+    function stringThisScreenToFloat (value: string){
+        return parseFloat(value.replace('R$', '').split(',').join('.'))
+    }
+
+    function validate(){
+        if(initialValue.length === 0){
+            setAlertText('O campo valor inicial é obrigatório.')
+            return false
+        }
+    
+        if(monthlyInvestment.length === 0){
+            setAlertText('O campo aporte mensal é obrigatório.')
+            return false
+        }
+    
+        if(interestRate.length === 0){
+            setAlertText('O campo taxa de juros é obrigatório.')
+            return false
+        }
+    
+        if(
+            (interestRatePeriod === 'month' && stringThisScreenToFloat(interestRate) > 1200)
+            || 
+            (interestRatePeriod === 'year' && stringThisScreenToFloat(interestRate) > 100)
+        ){
+            setAlertText('Você definiu uma taxa de juros muito grande, por favor defina uma menor.')
+            return false
+        }
+    
+        if(period.length === 0){
+            setAlertText('O campo período é obrigatório.')
+            return false
+        }
+        
+        if(
+            (investmentTimeType === 'month' && stringThisScreenToFloat(period) > 1200)
+            || 
+            (investmentTimeType === 'year' && stringThisScreenToFloat(period) > 100)
+        ){
+            setAlertText('Você definiu um período muito grande, por favor defina um menor.')
+            return false
+        }
+      
+        if(stringThisScreenToFloat(initialValue) > 1000000000){
+            setAlertText('Você definiu um valor inicial muito grande, por favor defina um menor.')
+            return false
+        }
+    
+        if(stringThisScreenToFloat(monthlyInvestment) > 1000000000){
+            setAlertText('Você definiu um aporte mensal muito grande, por favor defina um menor.')
+            return false
+        }
+        
+        return true
+    }
+
+    function send() {
+        if(validate()){
+
+        }
+    }
 
     return (
         <>
@@ -95,7 +172,7 @@ export function Home () {
                 </RightColumn>
             </Content>
             <Footer>
-                <Button>
+                <Button onPress={() => send()}>
                     <ButtonLabel>CALCULAR</ButtonLabel>
                 </Button>
 
@@ -121,6 +198,9 @@ export function Home () {
           }}
           overlayColor={'transparent'}
         />
+        
+        <Alert alertVisible={alertVisible} setAlertVisible={setAlertVisible} text={alertText}/>
+
       </>
     )
 }  
