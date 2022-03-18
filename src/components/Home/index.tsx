@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
+import { Linking, Share } from 'react-native'
 import { FloatingAction } from "react-native-floating-action"
 import { TextInputMask } from 'react-native-masked-text'
 import { CalculateCompoundInterest } from '../../utils/CalculateCompoundInterest/CalculateCompoundInterest'
@@ -18,6 +19,8 @@ const textInputMaskStyle = {
 }
 
 export function Home () {
+
+    const scrollViewRef = useRef<any>(null)
 
     const [initialValue, setInitialValue] = useState('')
     const [interestRate, setInterestRate] = useState('')
@@ -117,12 +120,14 @@ export function Home () {
                 investmentTimeType: investmentTimeType
             }
             setCalculateCompoundInterestResponse(CalculateCompoundInterest(toSend))
+
+            scrollViewRef.current?.scrollToEnd({ animated: true })
         }
     }
  
     return (
         <>
-        <Container >
+        <Container ref={scrollViewRef} >
             <Header title="Calculadora de Juros Compostos" />
             <Content>
                 <LeftColumn>
@@ -203,16 +208,30 @@ export function Home () {
             {
               text: "Avaliar o App",
               icon: require("../../assets/images/star-icon.png"),
-              name: "btn-share-app"
+              name: "btn-rate-app"
             },
             {
                 text: "Indique para Alguém",
                 icon: require("../../assets/images/share-icon.png"),
-                name: "btn-rate-app"
+                name: "btn-share-app"
             }
           ]}
           onPressItem={name => {
-            console.log(`selected button: ${name}`);
+            if(name === 'btn-rate-app'){
+                const url = "https://play.google.com/store/apps/details?id=br.com.fiiquedeboa.juroscompostos";
+                Linking.canOpenURL(url).then(supported => {
+                    if (supported) {
+                        return Linking.openURL(url)
+                    }
+                }).catch(err => {
+                })
+            }
+
+            if(name === 'btn-share-app'){
+                Share.share({
+                    message: "https://play.google.com/store/apps/details?id=br.com.fiiquedeboa.juroscompostos"
+                })
+            }
           }}
           overlayColor={'transparent'}
         />

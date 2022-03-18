@@ -28,10 +28,9 @@ export function FieldRadio({ radioProps, onPress, isSelected }: IFieldRadio) {
                         onPress={onPress}
                         buttonInnerColor={'#2196f3'}
                         buttonOuterColor={isSelected === obj.value ? '#2196f3' : '#2196f3'}
-                        borderWidth={1}
                         buttonSize={10}
                         buttonOuterSize={25}
-                        buttonStyle={{}}
+                        buttonStyle={{borderWidth: 1}}
                         buttonWrapStyle={{marginLeft: 0}}
                     />
                     <RadioButtonLabel

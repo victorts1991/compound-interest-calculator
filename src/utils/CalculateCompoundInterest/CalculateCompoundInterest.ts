@@ -12,6 +12,14 @@ export function CalculateCompoundInterest( data: ICalculateCompoundInterest ) : 
     //convert year interest to month interest if necessary
     const interestRateAdjust = data.interestRatePeriod === 'year' 
         ? 
+            /*
+                Formula:
+                Iq = interest rate in the period you want;
+                It = interest rate in the period wich you have;
+                q  = period wich you want;
+                t  = period wich you have;
+                Iq = [(1 + It)^q/t – 1] x 100
+            */
             ((Math.pow((1 + (data.interestRate / 100)), (1 / 12)) - 1) * 100)
         : 
             parseFloat(data.interestRate.toFixed(2))
