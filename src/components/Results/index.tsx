@@ -1,27 +1,26 @@
 import React from 'react'
-import { Text } from 'react-native'
-
+import { ICalculateCompoundInterestResponse } from '../../utils/CalculateCompoundInterest/interfaces'
 import { Container, BigTitle, SubContainer, SmallTitle, VeryBigTitle } from './styles'
 
-export function Results () {
+export function Results (data: ICalculateCompoundInterestResponse) {
     return (
         <Container>
             <BigTitle>Resultado</BigTitle>
             <SubContainer>
                 <SmallTitle>Total Investido</SmallTitle>
-                <VeryBigTitle>--</VeryBigTitle>
+                <VeryBigTitle>{ data.totalInvested }</VeryBigTitle>
             </SubContainer>
             <SubContainer>
                 <SmallTitle>Total em Juros</SmallTitle>
-                <VeryBigTitle>--</VeryBigTitle>
+                <VeryBigTitle>{ data.totalInInterest }</VeryBigTitle>
             </SubContainer>
             <SubContainer>
                 <SmallTitle>Total Acumulado</SmallTitle>
-                <VeryBigTitle>--</VeryBigTitle>
+                <VeryBigTitle>{ data.amountWithInterest }</VeryBigTitle>
             </SubContainer>
             <SubContainer>
-                <SmallTitle>Rendimento de Juros no Próximo Mês</SmallTitle>
-                <VeryBigTitle>--</VeryBigTitle>
+                <SmallTitle>Rendimento de Juros no Último Mês</SmallTitle>
+                <VeryBigTitle>{ data.interestAmountInTheLastMonth }</VeryBigTitle>
             </SubContainer>
         </Container>
     )

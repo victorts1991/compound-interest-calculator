@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { FloatingAction } from "react-native-floating-action"
 import { TextInputMask } from 'react-native-masked-text'
+import { CalculateCompoundInterest } from '../../utils/CalculateCompoundInterest/CalculateCompoundInterest'
 import { FieldRadio } from '../FieldRadio'
 import { Header } from '../Header'
 import { Results } from '../Results'
@@ -28,6 +29,13 @@ export function Home () {
     const [alertVisible, setAlertVisible] = useState(false)
     const [alertText, setAlertText] = useState('')
 
+    const [calculateCompoundInterestResponse, setCalculateCompoundInterestResponse] = useState({
+        totalInvested: '--',
+        totalInInterest: '--', 
+        amountWithInterest: '--', 
+        interestAmountInTheLastMonth: '--'  
+    })
+
     useEffect(() => {
         if(alertText !== ''){
             setAlertVisible(true)
@@ -40,8 +48,10 @@ export function Home () {
         }
     }, [alertVisible])
 
+
+    //remove all . in the string then change the , to a . then remove R$ text
     function stringThisScreenToFloat (value: string){
-        return parseFloat(value.replace('R$', '').split(',').join('.'))
+        return parseFloat(value.split('.').join('').replace(',', '.').replace('R$', ''))
     }
 
     function validate(){
@@ -98,13 +108,21 @@ export function Home () {
 
     function send() {
         if(validate()){
-
+            const toSend = {
+                initialValue: stringThisScreenToFloat(initialValue),
+                monthlyInvestment: stringThisScreenToFloat(monthlyInvestment),
+                interestRate: stringThisScreenToFloat(interestRate),
+                interestRatePeriod: interestRatePeriod,
+                period: stringThisScreenToFloat(period),
+                investmentTimeType: investmentTimeType
+            }
+            setCalculateCompoundInterestResponse(CalculateCompoundInterest(toSend))
         }
     }
-
+ 
     return (
         <>
-        <Container>
+        <Container >
             <Header title="Calculadora de Juros Compostos" />
             <Content>
                 <LeftColumn>
@@ -176,7 +194,7 @@ export function Home () {
                     <ButtonLabel>CALCULAR</ButtonLabel>
                 </Button>
 
-                <Results />
+                <Results {...calculateCompoundInterestResponse}/>
             </Footer>
         </Container>
         
