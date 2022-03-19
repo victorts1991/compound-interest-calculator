@@ -1,6 +1,5 @@
-import 'react-native';
-import { Alert } from 'react-native'
-import React from 'react';
+import 'react-native'
+import React from 'react'
 import App from '../src/App'
 
 // Note: test renderer must be required after react-native.
@@ -14,7 +13,7 @@ jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
 
 describe('Home Page', () => {
     it('should not be able to calculate compound interest if fields are not filled or filled correctly', () => {
-        const Screen = renderer.create(<App />);
+        const Screen = renderer.create(<App />)
 
         const buttonCalculate = Screen.root.findByProps({ testID: 'button-calculate' })
         const totalInvested = Screen.root.findByProps({ testID: 'total-invested' })
@@ -75,8 +74,6 @@ describe('Home Page', () => {
         act(() => {
             investmentTimeTypeMonth.props.onPress()
         })
-        
-        /*
         fireEvent(interestRate, 'onChangeText', '1201')
         act(() => {
             buttonCalculate.props.onPress()
@@ -84,23 +81,52 @@ describe('Home Page', () => {
         //Você definiu uma taxa de juros muito grande, por favor defina uma menor.
         expect(totalInvested.props.children).toEqual('--')
 
-
-
-        
-        
-        act(() => {
-            investmentTimeTypeYear.props.onPress()
-        })
         fireEvent(interestRate, 'onChangeText', '101')
+        act(() => {
+            interestRatePeriodYear.props.onPress()
+        })
+        
         act(() => {
             buttonCalculate.props.onPress()
         })
         //Você definiu uma taxa de juros muito grande, por favor defina uma menor 2.
         expect(totalInvested.props.children).toEqual('--')
         
+        fireEvent(interestRate, 'onChangeText', '10')
+        fireEvent(period, 'onChangeText', '1201')
+        act(() => {
+            buttonCalculate.props.onPress()
+        })
+        //Você definiu um período muito grande, por favor defina um menor.
+        expect(totalInvested.props.children).toEqual('--')
 
+        act(() => {
+            investmentTimeTypeYear.props.onPress()
+        })
+        fireEvent(period, 'onChangeText', '101')
+        act(() => {
+            buttonCalculate.props.onPress()
+        })
+        //Você definiu um período muito grande, por favor defina um menor.
+        expect(totalInvested.props.children).toEqual('--')
 
-        fireEvent(interestRate, 'onChangeText', '12')*/
+        fireEvent(period, 'onChangeText', '20')
+        fireEvent(initialValue, 'onChangeText', '1000000001')
+        act(() => {
+            buttonCalculate.props.onPress()
+        })
+        //Você definiu um valor inicial muito grande, por favor defina um menor.
+        expect(totalInvested.props.children).toEqual('--')
+
+        fireEvent(initialValue, 'onChangeText', '100')
+        fireEvent(monthlyInvestment, 'onChangeText', '1000000001')
+        act(() => {
+            buttonCalculate.props.onPress()
+        })
+        //Você definiu um aporte mensal muito grande, por favor defina um menor.
+        expect(totalInvested.props.children).toEqual('--')
+        
+        fireEvent(monthlyInvestment, 'onChangeText', '200')
         act(() => {
             buttonCalculate.props.onPress()
         })
