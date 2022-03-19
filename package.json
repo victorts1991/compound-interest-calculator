@@ -72,8 +72,7 @@
     ],
     "collectCoverageFrom": [
       "src/components/**/*.tsx",
-      "src/store/reducers/*.ts",
-      "src/utils/*.ts"
+      "src/utils/**/*.ts"
     ]
   }
 }
