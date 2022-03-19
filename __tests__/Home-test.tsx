@@ -1,10 +1,10 @@
 import 'react-native'
 import React from 'react'
-import App from '../src/App'
 
 // Note: test renderer must be required after react-native.
 import renderer from 'react-test-renderer'
 import { fireEvent } from '@testing-library/react-native'
+import { Home } from '../src/components/Home'
 const { act } = renderer;
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
@@ -13,7 +13,7 @@ jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
 
 describe('Home Page', () => {
     it('should not be able to calculate compound interest if fields are not filled or filled correctly', () => {
-        const Screen = renderer.create(<App />)
+        const Screen = renderer.create(<Home />)
 
         const buttonCalculate = Screen.root.findByProps({ testID: 'button-calculate' })
         const totalInvested = Screen.root.findByProps({ testID: 'total-invested' })
@@ -135,7 +135,7 @@ describe('Home Page', () => {
     })
     
     it('should be able to calculate compound interest with month rate', ()=>{
-        const Screen = renderer.create(<App />);
+        const Screen = renderer.create(<Home />);
 
         const buttonCalculate = Screen.root.findByProps({ testID: 'button-calculate' })
         
@@ -173,7 +173,7 @@ describe('Home Page', () => {
     })
 
     it('should be able to calculate compound interest with year rate', ()=>{
-        const Screen = renderer.create(<App />);
+        const Screen = renderer.create(<Home />);
 
         const buttonCalculate = Screen.root.findByProps({ testID: 'button-calculate' })
         
