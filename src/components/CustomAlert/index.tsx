@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { Alert } from 'react-native'
 import { FancyAlert } from 'react-native-expo-fancy-alerts'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import { Container, ContainerIcon, FancyAlertText, Button, ButtonLabel } from './styles'
@@ -9,7 +10,7 @@ interface IAlert {
     text: string
 }
 
-export function Alert ({ alertVisible, setAlertVisible, text }: IAlert) {
+export function CustomAlert ({ alertVisible, setAlertVisible, text }: IAlert) {
     return (
         <Container>
             <FancyAlert

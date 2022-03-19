@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+
 import SplashScreen from 'react-native-splash-screen'
 
 import { BannerAdMob } from './components/BannerAdMob'
@@ -22,7 +23,7 @@ export default function App () {
   const [canOpenHeaderAd, setcanOpenHeaderAd] = useState(false)
   
   useEffect(() => {
-    SplashScreen.hide()
+    if (process.env.NODE_ENV !== 'test') SplashScreen.hide()
     setTimeout(() => {
       setcanOpenHeaderAd(true)
     }, 1000)

@@ -8,19 +8,19 @@ export function Results (data: ICalculateCompoundInterestResponse) {
             <BigTitle>Resultado</BigTitle>
             <SubContainer>
                 <SmallTitle>Total Investido</SmallTitle>
-                <VeryBigTitle>{ data.totalInvested }</VeryBigTitle>
+                <VeryBigTitle testID={'total-invested'}>{ data.totalInvested }</VeryBigTitle>
             </SubContainer>
             <SubContainer>
                 <SmallTitle>Total em Juros</SmallTitle>
-                <VeryBigTitle>{ data.totalInInterest }</VeryBigTitle>
+                <VeryBigTitle testID={'total-in-interest'}>{ data.totalInInterest }</VeryBigTitle>
             </SubContainer>
             <SubContainer>
                 <SmallTitle>Total Acumulado</SmallTitle>
-                <VeryBigTitle>{ data.amountWithInterest }</VeryBigTitle>
+                <VeryBigTitle testID={'amount-with-interest'}>{ data.amountWithInterest }</VeryBigTitle>
             </SubContainer>
             <SubContainer>
                 <SmallTitle>Rendimento de Juros no Último Mês</SmallTitle>
-                <VeryBigTitle>{ data.interestAmountInTheLastMonth }</VeryBigTitle>
+                <VeryBigTitle testID={'interest-amount-in-the-last-month'}>{ data.interestAmountInTheLastMonth }</VeryBigTitle>
             </SubContainer>
         </Container>
     )

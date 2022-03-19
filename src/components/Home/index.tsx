@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Linking, Share } from 'react-native'
 import { FloatingAction } from "react-native-floating-action"
+
 import { TextInputMask } from 'react-native-masked-text'
 import { CalculateCompoundInterest } from '../../utils/CalculateCompoundInterest/CalculateCompoundInterest'
 import { FieldRadio } from '../FieldRadio'
 import { Header } from '../Header'
 import { Results } from '../Results'
-import { Alert } from '../Alert'
+import { CustomAlert } from '../CustomAlert'
 import { Container, Content, LeftColumn, RightColumn, RadioFormContainer, Button, ButtonLabel, Footer } from './styles'
 
 const textInputMaskStyle = {
@@ -72,7 +73,12 @@ export function Home () {
             setAlertText('O campo taxa de juros é obrigatório.')
             return false
         }
-    
+
+        if(interestRatePeriod !== 'month' && interestRatePeriod !== 'year') {
+            setAlertText('É necessário definir se a taxa de juros é mensal ou anual.')
+            return false
+        }
+        
         if(
             (interestRatePeriod === 'month' && stringThisScreenToFloat(interestRate) > 1200)
             || 
@@ -86,6 +92,12 @@ export function Home () {
             setAlertText('O campo período é obrigatório.')
             return false
         }
+
+        if(investmentTimeType !== 'month' && investmentTimeType !== 'year') {
+            setAlertText('É necessário definir se o período é mensal ou anual.')
+            return false
+        }
+        
         
         if(
             (investmentTimeType === 'month' && stringThisScreenToFloat(period) > 1200)
@@ -137,6 +149,7 @@ export function Home () {
                       placeholder={ 'Valor Inicial' }
                       placeholderTextColor={'#000'}
                       value={initialValue}
+                      testID={'initial-value'}
                       onChangeText={text => setInitialValue(text)}
 					/>
                     <TextInputMask
@@ -152,6 +165,7 @@ export function Home () {
                       placeholder={ 'Taxa de Juros' }
                       placeholderTextColor={'#000'}
                       value={interestRate}
+                      testID={'interest-rate'}
                       onChangeText={text => setInterestRate(text)}
 					/>
                     <TextInputMask
@@ -160,6 +174,7 @@ export function Home () {
                         placeholder={ 'Período' }
                         placeholderTextColor={'#000'}
                         value={period}
+                        testID={'period'}
                         onChangeText={text => setPeriod(text)}
 					/>
                 </LeftColumn>
@@ -170,6 +185,7 @@ export function Home () {
                       placeholder={ 'Aporte Mensal' }
                       placeholderTextColor={'#000'}
                       value={monthlyInvestment}
+                      testID={'monthly-investment'}
                       onChangeText={text => setMonthlyInvestment(text)}
 					/>
                     <RadioFormContainer>
@@ -178,6 +194,7 @@ export function Home () {
                                 {label: '% a.m  ', value: 'month'},
                                 {label: '% a.a', value: 'year'},
                             ]}
+                            testID={'interest-rate-period'}
                             onPress={(value) => setInterestRatePeriod(value)}
                             isSelected={interestRatePeriod}
                         />
@@ -188,6 +205,7 @@ export function Home () {
                                 {label: 'mês(es)  ', value: 'month'},
                                 {label: 'ano(s)', value: 'year'},
                             ]}
+                            testID={'investment-time-type'}
                             onPress={(value) => setInvestmentTimeType(value)}
                             isSelected={investmentTimeType}
                         />
@@ -195,7 +213,7 @@ export function Home () {
                 </RightColumn>
             </Content>
             <Footer>
-                <Button onPress={() => send()}>
+                <Button testID={'button-calculate'} onPress={() => send()}>
                     <ButtonLabel>CALCULAR</ButtonLabel>
                 </Button>
 
@@ -216,7 +234,7 @@ export function Home () {
                 name: "btn-share-app"
             }
           ]}
-          onPressItem={name => {
+          onPressItem={(name) => {
             if(name === 'btn-rate-app'){
                 const url = "https://play.google.com/store/apps/details?id=br.com.fiiquedeboa.juroscompostos";
                 Linking.canOpenURL(url).then(supported => {
@@ -236,7 +254,7 @@ export function Home () {
           overlayColor={'transparent'}
         />
         
-        <Alert alertVisible={alertVisible} setAlertVisible={setAlertVisible} text={alertText}/>
+        <CustomAlert alertVisible={alertVisible} setAlertVisible={setAlertVisible} text={alertText}/>
 
       </>
     )
