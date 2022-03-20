@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1048385991375",
+    "project_id": "juros-compostos-293d2",
+    "storage_bucket": "juros-compostos-293d2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1048385991375:android:a5fd33fe52fb571a633dba",
+        "android_client_info": {
+          "package_name": "br.com.fiiquedeboa.juroscompostos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1048385991375-e0o0qig3iusu3p4qrsrum3ltvfvj8su9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALcGdPtlp4suP4fb8wprMqdOBgotfoLl0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1048385991375-e0o0qig3iusu3p4qrsrum3ltvfvj8su9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-8877337663905087~6802905512"
+    }
+  ],
+  "configuration_version": "1"
+}
