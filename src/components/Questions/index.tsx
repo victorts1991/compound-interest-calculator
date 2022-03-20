@@ -152,7 +152,7 @@ export function Questions () {
                    openQuestion === 8 && 
                    <AnswerContainer testID={'answer-8'}>
                         <Answer>Basta ir na primeira aba, definir um valor inicial, a quantidade que pretende aportar por mês, definir um valor de juros mensal ou anual, inserir com quantos meses ou anos deseja que a simulação seja feita.</Answer>
-                        <Answer>Após isso é só apertar o botão "Calcular" e o aplicativo irá exibir quanto você teria investido no período, qual foi o valor de juros que você ganhou, o total acumulado, e por fim no último bloco, qual seria o valor que renderia os juros no próximo mês.</Answer>
+                        <Answer>Após isso é só apertar o botão "Calcular" e o aplicativo irá exibir quanto você teria investido no período, qual foi o valor de juros que você ganhou, o total acumulado, e qual o valor de rendimento de juros do último mês.</Answer>
                         <AdContainer>
                             <BannerAdMob />
                         </AdContainer>

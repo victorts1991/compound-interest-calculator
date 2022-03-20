@@ -12,7 +12,7 @@ jest.useFakeTimers()
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
 
 describe('Home Page', () => {
-    it('should not be able to calculate compound interest if fields are not filled or filled correctly', () => {
+    it('should not be able to calculate compound interest if fields are not filled or filled incorrectly', () => {
         const Screen = renderer.create(<Home />)
 
         const buttonCalculate = Screen.root.findByProps({ testID: 'button-calculate' })
