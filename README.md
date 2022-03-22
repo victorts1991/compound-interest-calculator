@@ -2,12 +2,7 @@
 
 A compound interest calculator built with React Native and TypeScript published on Google Play. 
 
-[![Demo Video](http://img.youtube.com/vi/JcwI1f-MbQo/0.jpg)](http://www.youtube.com/watch?v=JcwI1f-MbQo "App de Calculadora de Juros Compostos")
-
-##
-
-![Screenshot 1](Screenshot_1.jpeg)
-![Screenshot 2](Screenshot_2.jpeg)
+![Demo Video](demo_video.gif)
 
 ## Link to Store
 
