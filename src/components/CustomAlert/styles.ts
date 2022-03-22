@@ -14,6 +14,7 @@ export const ContainerIcon = styled.View`
 
 export const FancyAlertText = styled.Text`
     margin-top: -10px;
+    color: #000;
 `
 
 export const Button = styled.TouchableOpacity`
