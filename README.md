@@ -10,6 +10,9 @@ A compound interest calculator built with React Native and TypeScript published 
 
 ## This application used CI/CD in the AppCenter.
 
+The entire process of generating the app for testing or publishing is in the AppCenter pipeline.
+AdMob and Firebase secret variables are also environment variables in AppCenter.
+
 ## Running Locally
 
 Connect your cell phone to your computer or open an Android emulator.

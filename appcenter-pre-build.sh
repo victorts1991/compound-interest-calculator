@@ -1,4 +1,8 @@
-npm run set-settings ${ADMOB_UNIT_ID} ${ADS_APPLICATION_ID}
+npm run set-settings-admob ${ADMOB_UNIT_ID} ${ADS_APPLICATION_ID}
+
+if [ ${APP_ENV} = "prod" ]; then
+    npm run set-settings-firebase ${firebase_project_number} ${firebase_project_id} ${firebase_storage_bucket} ${firebase_mobilesdk_app_id} ${firebase_client_id} ${firebase_current_key} ${ADS_APPLICATION_ID} ${firebase_configuration_version}
+fi
 
 npm install -g react-native-cli
 

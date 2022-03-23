@@ -9,7 +9,8 @@
     "test": "jest",
     "test:coverage": "jest --coverage --watchAll --colors",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "set-settings": "node ./scripts/set-settings.js"
+    "set-settings-admob": "node ./scripts/set-settings-admob.js",
+    "set-settings-firebase": "node ./scripts/set-settings-firebase.js"
   },
   "dependencies": {
     "@babel/preset-env": "^7.16.11",
