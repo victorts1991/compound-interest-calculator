@@ -4,8 +4,8 @@ import SplashScreen from 'react-native-splash-screen'
 
 import { BannerAdMob } from './components/BannerAdMob'
 
-import { Home } from './components/Home'
-import { Questions } from './components/Questions'
+import { Home } from './pages/Home'
+import { Questions } from './pages/Questions'
 
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'

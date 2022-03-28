@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import { Container, SubContainer, QuestionContainer, Question, AnswerContainer, Answer, AdContainer } from './styles'
-import { Header } from '../Header'
-import { BannerAdMob } from '../BannerAdMob'
+import { Header } from '../../components/Header'
+import { BannerAdMob } from '../../components/BannerAdMob'
 
 export function Questions () {
 

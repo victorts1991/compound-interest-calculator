@@ -4,7 +4,7 @@ import React from 'react'
 // Note: test renderer must be required after react-native.
 import renderer from 'react-test-renderer'
 import { fireEvent } from '@testing-library/react-native'
-import { Home } from '../src/components/Home'
+import { Home } from '../src/pages/Home'
 const { act } = renderer;
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')

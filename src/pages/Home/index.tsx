@@ -4,10 +4,10 @@ import { FloatingAction } from "react-native-floating-action"
 
 import { TextInputMask } from 'react-native-masked-text'
 import { CalculateCompoundInterest } from '../../utils/CalculateCompoundInterest/CalculateCompoundInterest'
-import { FieldRadio } from '../FieldRadio'
-import { Header } from '../Header'
-import { Results } from '../Results'
-import { CustomAlert } from '../CustomAlert'
+import { FieldRadio } from '../../components/FieldRadio'
+import { Header } from '../../components/Header'
+import { Results } from '../../components/Results'
+import { CustomAlert } from '../../components/CustomAlert'
 import { Container, Content, LeftColumn, RightColumn, RadioFormContainer, Button, ButtonLabel, Footer } from './styles'
 
 const textInputMaskStyle = {

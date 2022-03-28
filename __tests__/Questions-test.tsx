@@ -1,6 +1,6 @@
 import 'react-native'
 import React from 'react'
-import { Questions } from '../src/components/Questions'
+import { Questions } from '../src/pages/Questions'
 
 // Note: test renderer must be required after react-native.
 import renderer from 'react-test-renderer'
