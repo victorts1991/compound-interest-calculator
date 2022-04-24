@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-
+import analytics from '@react-native-firebase/analytics'
 import SplashScreen from 'react-native-splash-screen'
 
 import { BannerAdMob } from './components/BannerAdMob'
@@ -24,8 +24,11 @@ export default function App () {
   
   useEffect(() => {
     if (process.env.NODE_ENV !== 'test') SplashScreen.hide()
-    setTimeout(() => {
+    setTimeout(async () => {
       setcanOpenHeaderAd(true)
+      await analytics().logEvent('test_event', {
+        data1: 'test1'
+      })
     }, 1000)
   }, [])
 

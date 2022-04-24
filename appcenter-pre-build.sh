@@ -11,3 +11,9 @@ react-native bundle --platform android --dev false --entry-file index.js --bundl
 rm -rf ./android/app/src/main/res/drawable-*
 
 rm -rf ./android/app/src/main/res/raw
+
+cd android
+./gradlew clean
+./gradlew build
+cd ..
+
